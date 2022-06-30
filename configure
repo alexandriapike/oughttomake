@@ -1,1 +1,23 @@
-touch config.mak
+. ./.config
+
+
+p="${prefixtype}"
+
+for i in "$@"
+do	case "$i" in
+		--p=*)
+			p=${i#*=}
+			;;
+		*)
+			fatalerror "$i"
+			;;
+	esac
+done
+
+
+standardoutput "
+prefix = $p
+libraryname = $libraryname
+" >> config.mak
+
+
