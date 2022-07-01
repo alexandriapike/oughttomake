@@ -1,12 +1,12 @@
 . ./.config
 
 
-p="${prefixtype}"
+libraryname="${prefixtype}"
 
 for i in "$@"
 do	case "$i" in
-		--p=*)
-			p=${i#*=}
+		--libraryname=*)
+			libraryname=${i#*=}
 			;;
 		*)
 			fatalerror "$i"
@@ -14,6 +14,7 @@ do	case "$i" in
 	esac
 done
 
+mkdir -p "include/${libraryname}"
 
 standardoutput "
 prefix = $p
